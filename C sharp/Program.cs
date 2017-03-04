@@ -6,9 +6,22 @@ using System.Threading.Tasks;
 
 namespace C_sharp
 {
-    public delegate void printDelegate(string Msg);
+    public delegate bool isPromotable(EmployeeClass emp);
+
+    
     class Program
-    {   
+    {   //For Delegate Example.
+        public static bool promoteMethod(EmployeeClass emp)
+        {
+            if (emp.expierence > 5)
+            {
+                return true;
+            }
+            else
+                return false;
+
+        }
+
         static void Main(string[] args)
         {
             // ####### MethodHiding Code###########
@@ -113,7 +126,10 @@ namespace C_sharp
             empList.Add(new EmployeeClass() { id = 2, name = "Ramesh", salary = 6000, expierence = 7 });
             empList.Add(new EmployeeClass() { id = 3, name = "Rahil", salary = 7000, expierence = 3 });
 
-            EmployeeClass.promoteEmployee(empList);
+            //initializing delegate
+            isPromotable isPromotableDelegate = new isPromotable(promoteMethod);
+
+            EmployeeClass.promoteEmployee(empList,isPromotableDelegate);
 
             Console.ReadKey();
         }

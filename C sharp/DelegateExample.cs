@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace C_sharp
 {   
-    class EmployeeClass
+    public class EmployeeClass
     {
         public int id { get; set; }
         public string name { get; set; }
         public int salary { get; set; }
         public int expierence { get; set; }
 
-        public static void promoteEmployee(List<EmployeeClass> Employees)
+        public static void promoteEmployee(List<EmployeeClass> Employees,isPromotable promoDelegate)
         {
             foreach (EmployeeClass emp in Employees)
             {
-                if (emp.expierence > 5)
+                if (promoDelegate(emp))
                 {
                     Console.WriteLine(emp.name);
                 } 
