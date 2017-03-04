@@ -105,8 +105,15 @@ namespace C_sharp
             Console.WriteLine("===== Delegate Example ==== ");
             Console.WriteLine(" ");
 
-            printDelegate ptrDel = new printDelegate(DelegateExample.printMessage);
-            ptrDel("HelloFromDelegate");
+            Console.WriteLine("Promoted Employeees ");
+
+            List<EmployeeClass> empList = new List<EmployeeClass>();
+
+            empList.Add(new EmployeeClass() { id = 1, name = "Laxman", salary = 5000, expierence = 6 });
+            empList.Add(new EmployeeClass() { id = 2, name = "Ramesh", salary = 6000, expierence = 7 });
+            empList.Add(new EmployeeClass() { id = 3, name = "Rahil", salary = 7000, expierence = 3 });
+
+            EmployeeClass.promoteEmployee(empList);
 
             Console.ReadKey();
         }
