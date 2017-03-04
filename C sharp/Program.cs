@@ -11,16 +11,17 @@ namespace C_sharp
     
     class Program
     {   //For Delegate Example.
-        public static bool promoteMethod(EmployeeClass emp)
-        {
-            if (emp.expierence > 5)
-            {
-                return true;
-            }
-            else
-                return false;
+        //we can get rid of this method by using lambda expression
+        //public static bool promoteMethod(EmployeeClass emp)
+        //{
+        //    if (emp.expierence > 5)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //        return false;
 
-        }
+        //}
 
         static void Main(string[] args)
         {
@@ -126,10 +127,12 @@ namespace C_sharp
             empList.Add(new EmployeeClass() { id = 2, name = "Ramesh", salary = 6000, expierence = 7 });
             empList.Add(new EmployeeClass() { id = 3, name = "Rahil", salary = 7000, expierence = 3 });
 
-            //initializing delegate
-            isPromotable isPromotableDelegate = new isPromotable(promoteMethod);
+            //no need to intialize the delegate now
+            //isPromotable isPromotableDelegate = new isPromotable(promoteMethod);
 
-            EmployeeClass.promoteEmployee(empList,isPromotableDelegate);
+            //using lambda expression
+            // "empLambdaExpName" will be automaticaly associate itself with "EmployeeClass" which is passed in Declaration of Delegate.
+             EmployeeClass.promoteEmployee(empList,empLambdaExpName => empLambdaExpName.expierence >2);
 
             Console.ReadKey();
         }
