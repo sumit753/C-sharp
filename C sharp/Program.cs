@@ -8,6 +8,8 @@ namespace C_sharp
 {
     public delegate bool isPromotable(EmployeeClass emp);
 
+  
+
     
     class Program
     {   //For Delegate Example.
@@ -22,6 +24,8 @@ namespace C_sharp
         //        return false;
 
         //}
+
+            
 
         static void Main(string[] args)
         {
@@ -133,6 +137,55 @@ namespace C_sharp
             //using lambda expression
             // "empLambdaExpName" will be automaticaly associate itself with "EmployeeClass" which is passed in Declaration of Delegate.
              EmployeeClass.promoteEmployee(empList,empLambdaExpName => empLambdaExpName.expierence >2);
+
+            Console.WriteLine(" ");
+
+            Console.WriteLine("===== Anonymous Method Demo ==== ");
+            Console.WriteLine(" ");
+
+            List<Person> personList = new List<Person>();
+
+            personList.Add(new Person() { Name = "Sumit" ,Age=24 });
+            personList.Add(new Person() { Name = "Amit", Age = 25 });
+            personList.Add(new Person() { Name = "Aman", Age = 18 });
+            personList.Add(new Person() { Name = "Chinky", Age = 20 });
+            personList.Add(new Person() { Name = "Pinky", Age = 19 });
+
+            //Step 2 Anonymous method example -create instance of Predicate<Person> delegate and
+            // pass the name of method created in step 1 into Perdicate's constructor.
+
+            Predicate<Person> personDelgate = new Predicate<Person>(Person.criteriaMethod);
+
+            //Step 3 Anonymous method example 
+            //Now pass the delegate instance as an argument for Find method.
+            
+            Person p=personList.Find(person => personDelgate(person));
+            Console.WriteLine("====Without Using Anonymous Method===");
+            Console.WriteLine(" ");
+            Console.WriteLine(p.Name);
+            //we did all these three steps because Find() method accepts Predicate delegate as an agrument.
+            // find method return only first occurance of matched condition in the entire list. If we need all 
+            // occurences than we can use FindAll() method.
+
+            Console.WriteLine("");
+            Console.WriteLine("====Using Anonymous Method===");
+            Console.WriteLine("");
+            //Anonymous method is passed as and argument in Find method
+            // This anonymous method replace the need for step 1,2 &3
+
+            Person person1 = personList.Find(
+                
+                    //anonymous method
+                    delegate(Person x)
+                    {
+                        return x.Age < 20;
+
+                    }
+            
+                
+                );
+
+            Console.WriteLine(person1.Name);
 
             Console.ReadKey();
         }
