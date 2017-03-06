@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
     class ParentClass
     {
-        string firstName, lastName;
+     public string firstName = "Sumit";
+     public string lastName = "Karma";
 
-        public void printFullName()
+
+    public void printFullName()
         {
             Console.WriteLine(firstName + " " + lastName);
         }

@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnonymousMethodDemo.cs" />
+    <Compile Include="AttributeExample.cs" />
     <Compile Include="DelegateExample.cs" />
     <Compile Include="InterfaceExample.cs" />
     <Compile Include="Methodhiding.cs" />
