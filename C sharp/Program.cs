@@ -188,12 +188,25 @@ namespace C_sharp
             Console.WriteLine(person1.Name);
 
             Console.WriteLine("");
-           // Console.WriteLine("====Using Atrribute Demo===");
+            // Console.WriteLine("====Using Atrribute Demo===");
             //Console.WriteLine("");
 
             //AttributeExample objAttribute = new AttributeExample();
             //its showing warning when we are using add method.
             //objAttribute.Add(10, 20);
+
+            Console.WriteLine("");
+             Console.WriteLine("==== Generics Demo===");
+            Console.WriteLine("");
+
+            GenericsDemo genDemo = new GenericsDemo();
+            bool result = genDemo.compareVariables<int>(10, 20);
+            Console.WriteLine("are 10 & 20 equal?? :"+ result);
+
+            bool result2 = genDemo.compareVariables<string>("Sumit", "Karma");
+
+            Console.WriteLine("are Sumit & karma equal ?? :" + result2);
+
             Console.ReadKey();
         }
     }
