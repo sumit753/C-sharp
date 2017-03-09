@@ -46,6 +46,9 @@
     <Compile Include="AnonymousMethodDemo.cs" />
     <Compile Include="AttributeExample.cs" />
     <Compile Include="DelegateExample.cs" />
+    <Compile Include="DictionaryExtensionMethod.cs" />
+    <Compile Include="EmployeeSortByNameClass.cs" />
+    <Compile Include="EmployeeSortBySalaryClass.cs" />
     <Compile Include="GenericsDemo.cs" />
     <Compile Include="InterfaceExample.cs" />
     <Compile Include="Methodhiding.cs" />

@@ -127,8 +127,8 @@ namespace C_sharp
 
             List<EmployeeClass> empList = new List<EmployeeClass>();
 
-            empList.Add(new EmployeeClass() { id = 1, name = "Laxman", salary = 5000, expierence = 6 });
-            empList.Add(new EmployeeClass() { id = 2, name = "Ramesh", salary = 6000, expierence = 7 });
+            empList.Add(new EmployeeClass() { id = 1, name = "Laxman", salary = 15000, expierence = 6 });
+            empList.Add(new EmployeeClass() { id = 2, name = "Ramesh", salary = 68400, expierence = 7 });
             empList.Add(new EmployeeClass() { id = 3, name = "Rahil", salary = 7000, expierence = 3 });
 
             //no need to intialize the delegate now
@@ -219,7 +219,9 @@ namespace C_sharp
 
             employeeDictionary.Add(emp1.id,emp1);
             employeeDictionary.Add(empl2.id, empl2);
-            
+            employeeDictionary.Add(emp3.id, emp3);
+
+            //accessing the dictionary using key 
             EmployeeClass emp = employeeDictionary[1];
 
             Console.WriteLine(emp);
@@ -237,8 +239,10 @@ namespace C_sharp
 
             //converting array into Dictionary
 
-             employeeDictionary = empArray.ToDictionary(y => y.id,y=>y);
+             Dictionary<int,EmployeeClass> empDict = empArray.ToDictionary(y => y.id,y=>y);
 
+            employeeDictionary.AddRange(empDict);
+            Console.WriteLine("---------After Merging two dictionary-----------------------");
             foreach (KeyValuePair<int,EmployeeClass> keyvaluepair in employeeDictionary)
             {
                 EmployeeClass eRef = keyvaluepair.Value;
@@ -251,9 +255,61 @@ namespace C_sharp
             int i = employeeDictionary.Count(ep => ep.Value.salary > 14000);
             Console.WriteLine(i);
 
-            
 
-           // Console.ReadKey();
+            Console.WriteLine("");
+            Console.WriteLine("====Sorting Complex types Demo===");
+            Console.WriteLine("");
+
+
+            //using the EmployeeClass list created at line no 128
+            Console.WriteLine("-------------------------");
+            Console.WriteLine("EmployeeList Before Sorting");
+            Console.WriteLine("-------------------------");
+            foreach (EmployeeClass empl in empList)
+            {
+                Console.WriteLine("Name : {0} , Salary{1}", empl.name, empl.salary);
+
+            }
+            empList.Sort();
+            Console.WriteLine(" ");
+            Console.WriteLine("-------------------------");
+            Console.WriteLine("EmployeeList after Sorting");
+            Console.WriteLine("-------------------------");
+            foreach (EmployeeClass empl in empList)
+            {
+                Console.WriteLine("Name : {0} , Salary : {1}", empl.name, empl.salary);
+
+            }
+
+            //we can also sort empList by name,salary,id By creating another class and implementing 
+            // IComparer interface. & then creating the object of that class and passing it in Sort method
+            // as argument.
+            Console.WriteLine(" ");
+            Console.WriteLine("-------------------------");
+            Console.WriteLine("EmployeeList Sorting by name");
+            Console.WriteLine("-------------------------");
+            Console.WriteLine( " ");
+            EmployeeSortByNameClass EmpByName = new EmployeeSortByNameClass();
+            empList.Sort(EmpByName);
+            foreach (EmployeeClass empl in empList)
+            {
+                Console.WriteLine("Name : {0} , Salary : {1}", empl.name, empl.salary);
+
+            }
+            Console.WriteLine(" ");
+            Console.WriteLine("-------------------------");
+            Console.WriteLine("EmployeeList Sorting by salary");
+            Console.WriteLine("-------------------------");
+            Console.WriteLine(" ");
+            EmployeeSortBySalaryClass EmpBySalary = new EmployeeSortBySalaryClass();
+            empList.Sort(EmpBySalary);
+            foreach (EmployeeClass empl in empList)
+            {
+                Console.WriteLine("Name : {0} , Salary : {1}", empl.name, empl.salary);
+
+            }
+
+            // Console.ReadKey();
         }
     }
 }
