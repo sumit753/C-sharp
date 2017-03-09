@@ -207,7 +207,53 @@ namespace C_sharp
 
             Console.WriteLine("are Sumit & karma equal ?? :" + result2);
 
-            Console.ReadKey();
+            Console.WriteLine("");
+            Console.WriteLine("====Dictionary Demo===");
+            Console.WriteLine("");
+
+            Dictionary<int, EmployeeClass> employeeDictionary = new Dictionary<int, EmployeeClass>();
+
+            EmployeeClass emp1 = new EmployeeClass() { id = 1,name="Sumit",salary=10000 };
+            EmployeeClass empl2 = new EmployeeClass() { id = 2, name = "Amit", salary = 5000 };
+            EmployeeClass emp3 = new EmployeeClass() { id = 3, name = "Rahul", salary = 4850 };
+
+            employeeDictionary.Add(emp1.id,emp1);
+            employeeDictionary.Add(empl2.id, empl2);
+            
+            EmployeeClass emp = employeeDictionary[1];
+
+            Console.WriteLine(emp);
+
+            Console.WriteLine();
+            //Understanding dictionary methods
+            EmployeeClass emp4 = new EmployeeClass() { id = 4, name = "Vaibhav", salary = 15000 };
+            EmployeeClass emp5 = new EmployeeClass() { id = 5, name = "Ranu", salary = 5100 };
+            EmployeeClass emp6 = new EmployeeClass() { id = 6, name = "Rakesh", salary = 14850 };
+
+            EmployeeClass[] empArray = new EmployeeClass[3];
+            empArray[0] = emp4;
+            empArray[1] = emp5;
+            empArray[2] = emp6;
+
+            //converting array into Dictionary
+
+             employeeDictionary = empArray.ToDictionary(y => y.id,y=>y);
+
+            foreach (KeyValuePair<int,EmployeeClass> keyvaluepair in employeeDictionary)
+            {
+                EmployeeClass eRef = keyvaluepair.Value;
+                Console.WriteLine(eRef);
+                Console.WriteLine("---------------------------------------------");
+            }
+
+            Console.WriteLine("Dictionary Count Function");
+
+            int i = employeeDictionary.Count(ep => ep.Value.salary > 14000);
+            Console.WriteLine(i);
+
+            
+
+           // Console.ReadKey();
         }
     }
 }

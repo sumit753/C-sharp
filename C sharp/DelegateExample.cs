@@ -23,5 +23,11 @@ namespace C_sharp
                 } 
             }
         }
+
+        public override string ToString()
+        {
+            Console.WriteLine("Id: " + this.id + " Name :" + this.name + " Salary :" + this.salary);
+            return null;
+        }
     }
 }
